@@ -163,32 +163,6 @@ function FinanceMockup() {
   );
 }
 
-/* ── Healthcare / Clinic Mockup ── */
-function HealthcareMockup() {
-  return (
-    <MockupWindow title="ClinicOS — Patient & Ops Manager">
-      <div className="grid grid-cols-3 gap-2 mb-3">
-        <StatPill label="Today" value="47" trend="patients" />
-        <StatPill label="Wait Time" value="8 min" trend="-40%" />
-        <StatPill label="No-shows" value="2%" trend="-5.3%" />
-      </div>
-      <div className="bg-[#161618] rounded-md p-2 mb-2">
-        <div className="text-[8px] text-zinc-500 uppercase tracking-wider mb-1.5">Appointment Queue</div>
-        <TableRow cells={["09:30 — Ahmad R.", "Dr. Tan", "Consultation", "Active"]} highlight />
-        <TableRow cells={["09:45 — Siti M.", "Dr. Lee", "Follow-up", "Waiting"]} />
-        <TableRow cells={["10:00 — James K.", "Dr. Tan", "Lab Review", "Confirmed"]} />
-      </div>
-      <div className="bg-[#161618] rounded-md p-2">
-        <div className="text-[8px] text-zinc-500 uppercase tracking-wider mb-1.5">AI Insights</div>
-        <div className="flex items-center gap-2 text-[9px] text-zinc-400 py-1">
-          <StatusDot color="bg-emerald" />
-          <span>Peak hours predicted 2–4 PM — auto-adjusted scheduling slots</span>
-        </div>
-      </div>
-    </MockupWindow>
-  );
-}
-
 /* ── Logistics Mockup ── */
 function LogisticsMockup() {
   return (
@@ -242,6 +216,32 @@ function RetailMockup() {
   );
 }
 
+/* ── Marketing & Social Mockup ── */
+function MarketingMockup() {
+  return (
+    <MockupWindow title="ContentEngine — AI Marketing Hub">
+      <div className="grid grid-cols-3 gap-2 mb-3">
+        <StatPill label="Trends Tracked" value="142" trend="+18 today" />
+        <StatPill label="Posts Queued" value="36" trend="this week" />
+        <StatPill label="Engagement" value="+184%" trend="vs last mo" />
+      </div>
+      <div className="bg-[#161618] rounded-md p-2 mb-2">
+        <div className="text-[8px] text-zinc-500 uppercase tracking-wider mb-1.5">Trending Now — Auto-Detected</div>
+        <TableRow cells={["#AIautomation", "TikTok + X", "+340%", "Active"]} highlight />
+        <TableRow cells={["#SmartHome", "Instagram + FB", "+128%", "Active"]} />
+        <TableRow cells={["#FutureOfWork", "LinkedIn", "+92%", "Active"]} />
+      </div>
+      <div className="bg-[#161618] rounded-md p-2">
+        <div className="text-[8px] text-zinc-500 uppercase tracking-wider mb-1.5">AI Content Pipeline</div>
+        <div className="flex items-center gap-2 text-[9px] text-zinc-400 py-1">
+          <StatusDot color="bg-emerald" />
+          <span>3 reels generated · 5 carousels · 2 blog posts — all scheduled across 6 platforms</span>
+        </div>
+      </div>
+    </MockupWindow>
+  );
+}
+
 /* ── Education Mockup ── */
 function EducationMockup() {
   return (
@@ -271,11 +271,32 @@ function EducationMockup() {
 /* ── Industry Data ── */
 export const industryData = [
   {
+    id: "marketing",
+    title: "Marketing & Social",
+    tagline: "Always-on content engine.",
+    description: "AI auto-aggregates trending topics, generates on-brand content, visuals, and short-form video, then schedules everything across all your social platforms — hands-free.",
+    mockup: MarketingMockup,
+    comparison: {
+      task: "Weekly content: research, design, video, copy & schedule",
+      manual: { time: "16 hrs", label: "Marketing team" },
+      ai: { time: "20 min", label: "Review & approve" },
+      saved: "98%",
+      savedLabel: "Hands-on time saved",
+    },
+  },
+  {
     id: "property",
     title: "Property Management",
     tagline: "Stop juggling spreadsheets.",
     description: "AI-managed listings, dynamic pricing, and booking sync across Airbnb, Booking.com, Agoda — all from one dashboard.",
     mockup: PropertyMockup,
+    comparison: {
+      task: "Daily sync: prices & availability for 20 units across 4 portals",
+      manual: { time: "90 min", label: "Manual portal updates" },
+      ai: { time: "Real-time", label: "Auto-sync everywhere" },
+      saved: "100%",
+      savedLabel: "No more manual updates",
+    },
   },
   {
     id: "fnb",
@@ -283,6 +304,13 @@ export const industryData = [
     tagline: "From inventory to insights.",
     description: "Demand forecasting, automated stock reordering, and waste reduction. Your kitchen runs itself.",
     mockup: FnBMockup,
+    comparison: {
+      task: "Daily inventory check & supplier ordering",
+      manual: { time: "2 hrs", label: "Manual stock count" },
+      ai: { time: "5 min", label: "AI auto-ordering" },
+      saved: "96%",
+      savedLabel: "Daily time saved",
+    },
   },
   {
     id: "manufacturing",
@@ -290,6 +318,13 @@ export const industryData = [
     tagline: "Predict before it breaks.",
     description: "Real-time OEE tracking, predictive maintenance alerts, and production line optimization.",
     mockup: ManufacturingMockup,
+    comparison: {
+      task: "Detect a machine failure before downtime",
+      manual: { time: "4 hrs", label: "Reactive repair" },
+      ai: { time: "Instant", label: "Predictive alert" },
+      saved: "62%",
+      savedLabel: "Downtime reduction",
+    },
   },
   {
     id: "finance",
@@ -297,13 +332,13 @@ export const industryData = [
     tagline: "Your analyst that never sleeps.",
     description: "Automated deal flow analysis, portfolio monitoring, valuation models, and investor-ready report generation.",
     mockup: FinanceMockup,
-  },
-  {
-    id: "healthcare",
-    title: "Healthcare & Clinics",
-    tagline: "Smarter patient flow.",
-    description: "AI-optimized scheduling, wait time reduction, patient follow-up automation, and operational analytics.",
-    mockup: HealthcareMockup,
+    comparison: {
+      task: "Generate an investor-ready quarterly report",
+      manual: { time: "8 hrs", label: "Analyst writing" },
+      ai: { time: "12 min", label: "AI generation" },
+      saved: "97%",
+      savedLabel: "Report turnaround",
+    },
   },
   {
     id: "logistics",
@@ -311,6 +346,13 @@ export const industryData = [
     tagline: "Every route, optimized.",
     description: "Fleet tracking, route optimization, delivery ETAs, and fuel cost reduction — powered by real-time AI.",
     mockup: LogisticsMockup,
+    comparison: {
+      task: "Plan optimal routes for 30 daily deliveries",
+      manual: { time: "90 min", label: "Manual planning" },
+      ai: { time: "3 min", label: "AI optimization" },
+      saved: "97%",
+      savedLabel: "Planning time + 18% fuel",
+    },
   },
   {
     id: "retail",
@@ -318,6 +360,13 @@ export const industryData = [
     tagline: "Sell smarter, stock better.",
     description: "Sales forecasting, inventory intelligence, dynamic promotions, and zero-stockout operations.",
     mockup: RetailMockup,
+    comparison: {
+      task: "Weekly stock reorder & sales analysis",
+      manual: { time: "4 hrs", label: "Manual review" },
+      ai: { time: "10 min", label: "AI forecast" },
+      saved: "96%",
+      savedLabel: "Weekly time saved",
+    },
   },
   {
     id: "education",
@@ -325,6 +374,13 @@ export const industryData = [
     tagline: "Scale learning, not admin.",
     description: "Student progress tracking, at-risk detection, automated communications, and course performance analytics.",
     mockup: EducationMockup,
+    comparison: {
+      task: "Generate student progress reports",
+      manual: { time: "30 min", label: "Per student" },
+      ai: { time: "2 min", label: "AI-curated" },
+      saved: "93%",
+      savedLabel: "Reporting time saved",
+    },
   },
 ];
 
@@ -370,32 +426,111 @@ export default function IndustriesSection() {
           </div>
 
           {/* Right content */}
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Text */}
-            <div>
-              <span className="text-xs text-emerald font-semibold uppercase tracking-[3px]">
-                {ind.tagline}
-              </span>
-              <h3 className="font-heading text-2xl md:text-3xl font-bold text-white mt-2 mb-4">
-                {ind.title}
-              </h3>
-              <div className="w-10 h-0.5 bg-gradient-to-r from-emerald to-emerald-light rounded mb-4" />
-              <p className="text-text-secondary leading-relaxed text-base">
-                {ind.description}
-              </p>
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 mt-6 text-sm text-emerald font-semibold hover:underline cursor-pointer"
-              >
-                Learn more &rarr;
-              </a>
+          <div className="space-y-10">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Text */}
+              <div>
+                <span className="text-xs text-emerald font-semibold uppercase tracking-[3px]">
+                  {ind.tagline}
+                </span>
+                <h3 className="font-heading text-2xl md:text-3xl font-bold text-white mt-2 mb-4">
+                  {ind.title}
+                </h3>
+                <div className="w-10 h-0.5 bg-gradient-to-r from-emerald to-emerald-light rounded mb-4" />
+                <p className="text-text-secondary leading-relaxed text-base">
+                  {ind.description}
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 mt-6 text-sm text-emerald font-semibold hover:underline cursor-pointer"
+                >
+                  Learn more &rarr;
+                </a>
+              </div>
+
+              {/* Mockup */}
+              <div className="relative">
+                <div className="absolute inset-0 bg-emerald/5 rounded-2xl blur-2xl -m-4" />
+                <div className="relative">
+                  <ind.mockup />
+                </div>
+              </div>
             </div>
 
-            {/* Mockup */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-emerald/5 rounded-2xl blur-2xl -m-4" />
-              <div className="relative">
-                <ind.mockup />
+            {/* Comparison block */}
+            <div className="bg-surface border border-zinc-800 rounded-[2px] p-6 md:p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-[10px] font-bold text-emerald uppercase tracking-[3px]">
+                  Real-World Comparison
+                </span>
+                <div className="flex-1 h-px bg-gradient-to-r from-emerald/30 to-transparent" />
+              </div>
+
+              <p className="text-sm text-text-secondary mb-5">
+                <span className="text-white font-medium">Task:</span> {ind.comparison.task}
+              </p>
+
+              <div className="grid sm:grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-4 sm:gap-3">
+                {/* Manual */}
+                <div className="bg-[#0F0F11] border border-zinc-800 rounded-[2px] p-4 text-center">
+                  <div className="text-[9px] font-bold text-zinc-500 uppercase tracking-[2px] mb-2">
+                    Manual Process
+                  </div>
+                  <div className="font-heading text-3xl font-bold text-zinc-300 mb-1">
+                    {ind.comparison.manual.time}
+                  </div>
+                  <div className="text-[11px] text-text-muted">
+                    {ind.comparison.manual.label}
+                  </div>
+                </div>
+
+                {/* Arrow */}
+                <div className="hidden sm:flex items-center justify-center text-emerald/50">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </div>
+
+                {/* AI */}
+                <div className="bg-emerald/5 border border-emerald/40 rounded-[2px] p-4 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald/10 to-transparent pointer-events-none" />
+                  <div className="relative">
+                    <div className="text-[9px] font-bold text-emerald uppercase tracking-[2px] mb-2">
+                      With Runestack
+                    </div>
+                    <div className="font-heading text-3xl font-bold text-emerald mb-1">
+                      {ind.comparison.ai.time}
+                    </div>
+                    <div className="text-[11px] text-text-secondary">
+                      {ind.comparison.ai.label}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Arrow */}
+                <div className="hidden sm:flex items-center justify-center text-emerald/50">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </div>
+
+                {/* Saved */}
+                <div className="bg-gradient-to-br from-emerald/15 to-emerald/5 border border-emerald rounded-[2px] p-4 text-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-emerald/5 blur-xl pointer-events-none" />
+                  <div className="relative">
+                    <div className="text-[9px] font-bold text-emerald-light uppercase tracking-[2px] mb-2">
+                      You Save
+                    </div>
+                    <div className="font-heading text-3xl font-bold text-white mb-1">
+                      {ind.comparison.saved}
+                    </div>
+                    <div className="text-[11px] text-emerald-light">
+                      {ind.comparison.savedLabel}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

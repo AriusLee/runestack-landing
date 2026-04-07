@@ -116,31 +116,385 @@ function MailIcon({ className = "" }: { className?: string }) {
   );
 }
 
+/* ── Service Illustrations ── */
+function WorkflowAutomationIllustration() {
+  return (
+    <svg viewBox="0 0 280 160" fill="none" className="w-full h-auto">
+      {/* Flow nodes */}
+      <rect x="20" y="35" width="50" height="22" rx="3" fill="#0F0F11" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1" />
+      <rect x="26" y="42" width="20" height="2" rx="1" fill="#10B981" opacity="0.7" />
+      <rect x="26" y="47" width="14" height="2" rx="1" fill="#10B981" opacity="0.4" />
+      <text x="45" y="53" textAnchor="middle" fill="#71717A" fontSize="5">TRIGGER</text>
+
+      <rect x="115" y="20" width="50" height="22" rx="3" fill="#0F0F11" stroke="#10B981" strokeWidth="1" />
+      <circle cx="125" cy="31" r="3" fill="#10B981" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <rect x="132" y="28" width="22" height="2" rx="1" fill="#A1A1AA" opacity="0.5" />
+      <rect x="132" y="33" width="16" height="2" rx="1" fill="#A1A1AA" opacity="0.3" />
+      <text x="140" y="50" textAnchor="middle" fill="#10B981" fontSize="5">AI DECISION</text>
+
+      <rect x="115" y="100" width="50" height="22" rx="3" fill="#0F0F11" stroke="#3F3F46" strokeWidth="1" />
+      <rect x="121" y="107" width="20" height="2" rx="1" fill="#A1A1AA" opacity="0.5" />
+      <rect x="121" y="112" width="14" height="2" rx="1" fill="#A1A1AA" opacity="0.3" />
+      <text x="140" y="129" textAnchor="middle" fill="#71717A" fontSize="5">PROCESS</text>
+
+      <rect x="210" y="60" width="50" height="22" rx="3" fill="#0F0F11" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1" />
+      <rect x="216" y="67" width="20" height="2" rx="1" fill="#10B981" opacity="0.7" />
+      <rect x="216" y="72" width="14" height="2" rx="1" fill="#10B981" opacity="0.4" />
+      <text x="235" y="89" textAnchor="middle" fill="#71717A" fontSize="5">ACTION</text>
+
+      {/* Connection lines */}
+      <line x1="70" y1="46" x2="115" y2="31" stroke="#10B981" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="3 2" />
+      <line x1="70" y1="46" x2="115" y2="111" stroke="#10B981" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="3 2" />
+      <line x1="165" y1="31" x2="210" y2="71" stroke="#10B981" strokeWidth="1.2" />
+      <line x1="165" y1="111" x2="210" y2="71" stroke="#10B981" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="3 2" />
+
+      {/* Lightning packets traveling along the flow path: trigger → AI → action */}
+      <circle r="2.2" fill="#34D399">
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2.4s" repeatCount="indefinite" />
+        <animateMotion dur="2.4s" repeatCount="indefinite" path="M 70 46 L 115 31 L 165 31 L 210 71" />
+      </circle>
+      <circle r="3.5" fill="#34D399" opacity="0.4">
+        <animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.1;0.9;1" dur="2.4s" repeatCount="indefinite" />
+        <animateMotion dur="2.4s" repeatCount="indefinite" path="M 70 46 L 115 31 L 165 31 L 210 71" />
+      </circle>
+
+      {/* Secondary path packet (process route) */}
+      <circle r="1.8" fill="#10B981">
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2.4s" begin="1.2s" repeatCount="indefinite" />
+        <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M 70 46 L 115 111 L 165 111 L 210 71" />
+      </circle>
+    </svg>
+  );
+}
+
+function PlatformDevIllustration() {
+  return (
+    <svg viewBox="0 0 280 160" fill="none" className="w-full h-auto">
+      {/* Browser/dashboard window */}
+      <rect x="20" y="20" width="240" height="125" rx="5" fill="#0F0F11" stroke="#3F3F46" strokeWidth="1" />
+      <rect x="20" y="20" width="240" height="14" rx="5" fill="#1A1A1A" />
+      <rect x="20" y="29" width="240" height="5" fill="#1A1A1A" />
+      <circle cx="30" cy="27" r="2" fill="#3F3F46" />
+      <circle cx="38" cy="27" r="2" fill="#3F3F46" />
+      <circle cx="46" cy="27" r="2" fill="#3F3F46" />
+
+      {/* Sidebar */}
+      <rect x="20" y="34" width="48" height="111" fill="#141416" />
+      <rect x="26" y="44" width="36" height="3" rx="1" fill="#10B981" opacity="0.7" />
+      <rect x="26" y="52" width="28" height="3" rx="1" fill="#3F3F46" />
+      <rect x="26" y="60" width="32" height="3" rx="1" fill="#3F3F46" />
+      <rect x="26" y="68" width="24" height="3" rx="1" fill="#3F3F46" />
+
+      {/* Stat cards */}
+      <rect x="76" y="44" width="55" height="32" rx="3" fill="#161618" stroke="#27272A" strokeWidth="0.5" />
+      <rect x="82" y="50" width="20" height="2" rx="1" fill="#71717A" />
+      <rect x="82" y="58" width="30" height="6" rx="1" fill="#10B981" opacity="0.9" />
+
+      <rect x="139" y="44" width="55" height="32" rx="3" fill="#161618" stroke="#27272A" strokeWidth="0.5" />
+      <rect x="145" y="50" width="20" height="2" rx="1" fill="#71717A" />
+      <rect x="145" y="58" width="30" height="6" rx="1" fill="#34D399" opacity="0.9" />
+
+      <rect x="202" y="44" width="50" height="32" rx="3" fill="#161618" stroke="#27272A" strokeWidth="0.5" />
+      <rect x="208" y="50" width="20" height="2" rx="1" fill="#71717A" />
+      <rect x="208" y="58" width="28" height="6" rx="1" fill="#10B981" opacity="0.9" />
+
+      {/* Chart area */}
+      <rect x="76" y="84" width="176" height="55" rx="3" fill="#141416" stroke="#27272A" strokeWidth="0.5" />
+      <polyline points="84,128 100,118 116,122 132,108 148,112 164,98 180,102 196,90 212,94 228,82 244,86 244,135 84,135" fill="#10B981" fillOpacity="0.1" />
+      <polyline
+        points="84,128 100,118 116,122 132,108 148,112 164,98 180,102 196,90 212,94 228,82 244,86"
+        stroke="#10B981"
+        strokeWidth="1.5"
+        fill="none"
+        strokeDasharray="240"
+        strokeDashoffset="240"
+      >
+        <animate attributeName="stroke-dashoffset" values="240;0;0;240" keyTimes="0;0.5;0.85;1" dur="4s" repeatCount="indefinite" />
+      </polyline>
+      {/* Pulse along the line */}
+      <circle r="2" fill="#34D399">
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" />
+        <animateMotion dur="4s" repeatCount="indefinite" path="M 84 128 L 100 118 L 116 122 L 132 108 L 148 112 L 164 98 L 180 102 L 196 90 L 212 94 L 228 82 L 244 86" />
+      </circle>
+    </svg>
+  );
+}
+
+function AdvisoryIllustration() {
+  return (
+    <svg viewBox="0 0 280 160" fill="none" className="w-full h-auto">
+      {/* Document */}
+      <rect x="60" y="20" width="160" height="130" rx="3" fill="#0F0F11" stroke="#3F3F46" strokeWidth="1" />
+      <rect x="60" y="20" width="160" height="20" fill="#10B981" fillOpacity="0.08" />
+      <rect x="70" y="27" width="60" height="6" rx="1" fill="#10B981" opacity="0.9" />
+      <rect x="70" y="36" width="40" height="2" rx="1" fill="#71717A" />
+
+      {/* Section: Score */}
+      <rect x="70" y="50" width="50" height="3" rx="1" fill="#A1A1AA" opacity="0.6" />
+      <rect x="70" y="58" width="140" height="22" rx="2" fill="#161618" stroke="#10B981" strokeOpacity="0.4" strokeWidth="0.5" />
+      <text x="78" y="73" fill="#10B981" fontSize="11" fontWeight="700">A+</text>
+      <rect x="100" y="65" width="100" height="3" rx="1.5" fill="#27272A" />
+      <rect x="100" y="65" height="3" rx="1.5" fill="#10B981">
+        <animate attributeName="width" values="0;85;85;0" keyTimes="0;0.4;0.85;1" dur="4s" repeatCount="indefinite" />
+      </rect>
+      <rect x="100" y="71" width="60" height="2" rx="1" fill="#71717A" />
+
+      {/* Bar chart */}
+      <rect x="70" y="90" width="60" height="3" rx="1" fill="#A1A1AA" opacity="0.6" />
+      <g>
+        <rect x="70" width="14" fill="#10B981" opacity="0.4">
+          <animate attributeName="y" values="140;100;100;140" keyTimes="0;0.3;0.85;1" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="height" values="0;40;40;0" keyTimes="0;0.3;0.85;1" dur="4s" repeatCount="indefinite" />
+        </rect>
+        <rect x="88" width="14" fill="#10B981" opacity="0.6">
+          <animate attributeName="y" values="140;108;108;140" keyTimes="0;0.35;0.85;1" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="height" values="0;32;32;0" keyTimes="0;0.35;0.85;1" dur="4s" repeatCount="indefinite" />
+        </rect>
+        <rect x="106" width="14" fill="#10B981" opacity="0.8">
+          <animate attributeName="y" values="140;96;96;140" keyTimes="0;0.4;0.85;1" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="height" values="0;44;44;0" keyTimes="0;0.4;0.85;1" dur="4s" repeatCount="indefinite" />
+        </rect>
+        <rect x="124" width="14" fill="#34D399">
+          <animate attributeName="y" values="140;92;92;140" keyTimes="0;0.45;0.85;1" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="height" values="0;48;48;0" keyTimes="0;0.45;0.85;1" dur="4s" repeatCount="indefinite" />
+        </rect>
+        <rect x="142" width="14" fill="#10B981">
+          <animate attributeName="y" values="140;86;86;140" keyTimes="0;0.5;0.85;1" dur="4s" repeatCount="indefinite" />
+          <animate attributeName="height" values="0;54;54;0" keyTimes="0;0.5;0.85;1" dur="4s" repeatCount="indefinite" />
+        </rect>
+      </g>
+
+      {/* Side metrics */}
+      <rect x="166" y="100" width="44" height="18" rx="2" fill="#161618" stroke="#27272A" strokeWidth="0.5" />
+      <rect x="170" y="105" width="20" height="2" rx="1" fill="#71717A" />
+      <rect x="170" y="111" width="30" height="4" rx="1" fill="#10B981" />
+
+      <rect x="166" y="122" width="44" height="18" rx="2" fill="#161618" stroke="#27272A" strokeWidth="0.5" />
+      <rect x="170" y="127" width="20" height="2" rx="1" fill="#71717A" />
+      <rect x="170" y="133" width="30" height="4" rx="1" fill="#34D399" />
+    </svg>
+  );
+}
+
+function IntegrationIllustration() {
+  return (
+    <svg viewBox="0 0 280 160" fill="none" className="w-full h-auto">
+      {/* Center hub */}
+      <circle cx="140" cy="80" r="22" fill="#0F0F11" stroke="#10B981" strokeWidth="1.5" />
+      <circle cx="140" cy="80" r="14" fill="none" stroke="#10B981" strokeOpacity="0.4" strokeWidth="0.8" strokeDasharray="2 2" />
+      <text x="140" y="78" textAnchor="middle" fill="#10B981" fontSize="6" fontWeight="700">RUNESTACK</text>
+      <text x="140" y="86" textAnchor="middle" fill="#A1A1AA" fontSize="4">CORE</text>
+
+      {/* Outer service nodes + data pulses from center */}
+      {[
+        { x: 60, y: 30, label: "API", delay: "0s" },
+        { x: 220, y: 30, label: "DB", delay: "0.4s" },
+        { x: 30, y: 80, label: "CRM", delay: "0.8s" },
+        { x: 250, y: 80, label: "ERP", delay: "1.2s" },
+        { x: 60, y: 130, label: "WEB", delay: "1.6s" },
+        { x: 220, y: 130, label: "APP", delay: "2s" },
+      ].map((n, i) => (
+        <g key={i}>
+          <line x1="140" y1="80" x2={n.x} y2={n.y} stroke="#10B981" strokeOpacity="0.35" strokeWidth="1" strokeDasharray="3 2" />
+          <rect x={n.x - 16} y={n.y - 9} width="32" height="18" rx="3" fill="#0F0F11" stroke="#3F3F46" strokeWidth="1" />
+          <text x={n.x} y={n.y + 3} textAnchor="middle" fill="#A1A1AA" fontSize="6" fontWeight="600">{n.label}</text>
+          {/* Data packet from hub to this node */}
+          <circle r="1.8" fill="#34D399">
+            <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;1" dur="2.4s" begin={n.delay} repeatCount="indefinite" />
+            <animateMotion dur="2.4s" begin={n.delay} repeatCount="indefinite" path={`M 140 80 L ${n.x} ${n.y}`} />
+          </circle>
+        </g>
+      ))}
+
+      {/* Pulse rings */}
+      <circle cx="140" cy="80" r="22" fill="none" stroke="#10B981" strokeOpacity="0.6" strokeWidth="1">
+        <animate attributeName="r" values="22;40;22" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite" />
+      </circle>
+    </svg>
+  );
+}
+
+function ContentEngineIllustration() {
+  return (
+    <svg viewBox="0 0 280 160" fill="none" className="w-full h-auto">
+      {/* Trends source on left */}
+      <rect x="15" y="30" width="60" height="100" rx="4" fill="#0F0F11" stroke="#3F3F46" strokeWidth="1" />
+      <rect x="22" y="38" width="46" height="2" rx="1" fill="#71717A" />
+      <rect x="22" y="46" width="46" height="14" rx="2" fill="#161618" />
+      <rect x="26" y="50" width="22" height="2" rx="1" fill="#10B981" opacity="0.7" />
+      <rect x="26" y="55" width="14" height="2" rx="1" fill="#3F3F46" />
+      <rect x="22" y="64" width="46" height="14" rx="2" fill="#161618" />
+      <rect x="26" y="68" width="20" height="2" rx="1" fill="#10B981" opacity="0.7" />
+      <rect x="26" y="73" width="16" height="2" rx="1" fill="#3F3F46" />
+      <rect x="22" y="82" width="46" height="14" rx="2" fill="#161618" />
+      <rect x="26" y="86" width="24" height="2" rx="1" fill="#10B981" opacity="0.7" />
+      <rect x="26" y="91" width="14" height="2" rx="1" fill="#3F3F46" />
+      <text x="45" y="115" textAnchor="middle" fill="#71717A" fontSize="5">TRENDS</text>
+
+      {/* AI engine center */}
+      <rect x="110" y="55" width="60" height="50" rx="5" fill="#0F0F11" stroke="#10B981" strokeWidth="1.5" />
+      <text x="140" y="73" textAnchor="middle" fill="#10B981" fontSize="6" fontWeight="700">AI ENGINE</text>
+      <rect x="118" y="80" width="44" height="3" rx="1" fill="#10B981" fillOpacity="0.3" />
+      <rect x="118" y="80" width="32" height="3" rx="1" fill="#10B981" />
+      <rect x="118" y="87" width="44" height="3" rx="1" fill="#10B981" fillOpacity="0.3" />
+      <rect x="118" y="87" width="38" height="3" rx="1" fill="#10B981" />
+      <text x="140" y="100" textAnchor="middle" fill="#A1A1AA" fontSize="4">GENERATING</text>
+
+      {/* Output content cards on right */}
+      <rect x="200" y="20" width="65" height="32" rx="3" fill="#0F0F11" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1" />
+      <rect x="206" y="26" width="20" height="2" rx="1" fill="#10B981" />
+      <rect x="206" y="31" width="40" height="2" rx="1" fill="#3F3F46" />
+      <rect x="206" y="36" width="35" height="2" rx="1" fill="#3F3F46" />
+      <text x="232" y="48" textAnchor="middle" fill="#71717A" fontSize="4">REEL</text>
+
+      <rect x="200" y="64" width="65" height="32" rx="3" fill="#0F0F11" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1" />
+      <rect x="206" y="70" width="20" height="2" rx="1" fill="#34D399" />
+      <rect x="206" y="75" width="40" height="2" rx="1" fill="#3F3F46" />
+      <rect x="206" y="80" width="35" height="2" rx="1" fill="#3F3F46" />
+      <text x="232" y="92" textAnchor="middle" fill="#71717A" fontSize="4">CAROUSEL</text>
+
+      <rect x="200" y="108" width="65" height="32" rx="3" fill="#0F0F11" stroke="#10B981" strokeOpacity="0.5" strokeWidth="1" />
+      <rect x="206" y="114" width="20" height="2" rx="1" fill="#10B981" />
+      <rect x="206" y="119" width="40" height="2" rx="1" fill="#3F3F46" />
+      <rect x="206" y="124" width="35" height="2" rx="1" fill="#3F3F46" />
+      <text x="232" y="136" textAnchor="middle" fill="#71717A" fontSize="4">POST</text>
+
+      {/* Connection lines */}
+      <line x1="75" y1="80" x2="110" y2="80" stroke="#10B981" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="2 2" />
+      <line x1="170" y1="65" x2="200" y2="36" stroke="#10B981" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="2 2" />
+      <line x1="170" y1="80" x2="200" y2="80" stroke="#10B981" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="2 2" />
+      <line x1="170" y1="95" x2="200" y2="124" stroke="#10B981" strokeOpacity="0.4" strokeWidth="1" strokeDasharray="2 2" />
+
+      {/* Trends → AI input pulses */}
+      <circle r="2" fill="#34D399">
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;1" dur="2s" repeatCount="indefinite" />
+        <animateMotion dur="2s" repeatCount="indefinite" path="M 75 80 L 110 80" />
+      </circle>
+
+      {/* AI → Output pulses (3 outputs, staggered) */}
+      <circle r="2" fill="#34D399">
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;1" dur="2s" begin="0.6s" repeatCount="indefinite" />
+        <animateMotion dur="2s" begin="0.6s" repeatCount="indefinite" path="M 170 65 L 200 36" />
+      </circle>
+      <circle r="2" fill="#34D399">
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;1" dur="2s" begin="0.9s" repeatCount="indefinite" />
+        <animateMotion dur="2s" begin="0.9s" repeatCount="indefinite" path="M 170 80 L 200 80" />
+      </circle>
+      <circle r="2" fill="#34D399">
+        <animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;1" dur="2s" begin="1.2s" repeatCount="indefinite" />
+        <animateMotion dur="2s" begin="1.2s" repeatCount="indefinite" path="M 170 95 L 200 124" />
+      </circle>
+    </svg>
+  );
+}
+
+function AnalyticsIllustration() {
+  return (
+    <svg viewBox="0 0 280 160" fill="none" className="w-full h-auto">
+      {/* Main chart panel */}
+      <rect x="20" y="20" width="170" height="125" rx="4" fill="#0F0F11" stroke="#3F3F46" strokeWidth="1" />
+      <rect x="28" y="28" width="50" height="3" rx="1" fill="#A1A1AA" opacity="0.6" />
+      <text x="28" y="45" fill="#10B981" fontSize="14" fontWeight="700">+184%</text>
+      <rect x="78" y="40" width="20" height="3" rx="1" fill="#34D399" opacity="0.7" />
+
+      {/* Grid lines */}
+      <line x1="28" y1="65" x2="180" y2="65" stroke="#27272A" strokeWidth="0.5" />
+      <line x1="28" y1="85" x2="180" y2="85" stroke="#27272A" strokeWidth="0.5" />
+      <line x1="28" y1="105" x2="180" y2="105" stroke="#27272A" strokeWidth="0.5" />
+      <line x1="28" y1="125" x2="180" y2="125" stroke="#27272A" strokeWidth="0.5" />
+
+      {/* Live area chart */}
+      <path d="M28,120 L48,110 L68,115 L88,95 L108,100 L128,80 L148,85 L168,65 L180,60 L180,135 L28,135 Z" fill="#10B981" fillOpacity="0.15" />
+      <polyline
+        points="28,120 48,110 68,115 88,95 108,100 128,80 148,85 168,65 180,60"
+        stroke="#10B981"
+        strokeWidth="1.5"
+        fill="none"
+        strokeDasharray="200"
+        strokeDashoffset="200"
+      >
+        <animate attributeName="stroke-dashoffset" values="200;0;0;200" keyTimes="0;0.5;0.85;1" dur="4s" repeatCount="indefinite" />
+      </polyline>
+      <circle cx="180" cy="60" r="3" fill="#10B981">
+        <animate attributeName="r" values="3;5;3" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      {/* Pulse running along the chart line */}
+      <circle r="2.2" fill="#34D399">
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" />
+        <animateMotion dur="4s" repeatCount="indefinite" path="M 28 120 L 48 110 L 68 115 L 88 95 L 108 100 L 128 80 L 148 85 L 168 65 L 180 60" />
+      </circle>
+
+      {/* Side metric cards */}
+      <rect x="200" y="20" width="60" height="38" rx="3" fill="#0F0F11" stroke="#27272A" strokeWidth="0.5" />
+      <rect x="206" y="26" width="22" height="2" rx="1" fill="#71717A" />
+      <text x="206" y="42" fill="#10B981" fontSize="9" fontWeight="700">2,841</text>
+      <rect x="206" y="46" width="14" height="2" rx="1" fill="#34D399" opacity="0.7" />
+
+      <rect x="200" y="64" width="60" height="38" rx="3" fill="#0F0F11" stroke="#27272A" strokeWidth="0.5" />
+      <rect x="206" y="70" width="22" height="2" rx="1" fill="#71717A" />
+      <text x="206" y="86" fill="#10B981" fontSize="9" fontWeight="700">94.7%</text>
+      <rect x="206" y="90" width="14" height="2" rx="1" fill="#34D399" opacity="0.7" />
+
+      <rect x="200" y="108" width="60" height="38" rx="3" fill="#0F0F11" stroke="#27272A" strokeWidth="0.5" />
+      <rect x="206" y="114" width="22" height="2" rx="1" fill="#71717A" />
+      <text x="206" y="130" fill="#10B981" fontSize="9" fontWeight="700">RM 48K</text>
+      <rect x="206" y="134" width="14" height="2" rx="1" fill="#34D399" opacity="0.7" />
+
+      {/* Live indicator */}
+      <circle cx="170" cy="32" r="2" fill="#10B981">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+      <text x="176" y="34" fill="#10B981" fontSize="5" fontWeight="600">LIVE</text>
+    </svg>
+  );
+}
+
 /* ── Data ── */
 const services = [
   {
-    icon: BotIcon,
     title: "AI Workflow Automation",
+    subtitle: "Wire AI into your daily ops",
     description:
-      "We wire AI into your daily operations — automating repetitive tasks, routing decisions, and triggering actions across your tools.",
+      "Automate repetitive tasks, route decisions, and trigger actions across your tools without manual handoffs.",
+    illustration: WorkflowAutomationIllustration,
   },
   {
-    icon: LayersIcon,
     title: "Custom Platform Development",
+    subtitle: "Built around your business",
     description:
-      "Full-stack platforms built around your business logic. Dashboards, APIs, integrations — designed to scale with you.",
+      "Full-stack dashboards, APIs, and integrations engineered for your exact workflow — designed to scale.",
+    illustration: PlatformDevIllustration,
   },
   {
-    icon: SearchIcon,
     title: "AI Advisory & Diagnostics",
+    subtitle: "Decode your business",
     description:
-      "Structured AI-powered reports that diagnose your business, map growth pathways, and prepare you for capital readiness.",
+      "Structured AI reports that diagnose your operations, map growth paths, and prepare you for capital readiness.",
+    illustration: AdvisoryIllustration,
   },
   {
-    icon: GearIcon,
     title: "System Integration",
+    subtitle: "One intelligent pipeline",
     description:
-      "Connect your existing tools into a single intelligent workflow. We bridge the gaps between platforms so data flows seamlessly.",
+      "Connect your existing tools into a single workflow. We bridge the gaps so data flows seamlessly.",
+    illustration: IntegrationIllustration,
+  },
+  {
+    title: "AI Content Engine",
+    subtitle: "Always-on marketing",
+    description:
+      "Auto-aggregate trends, generate content, and schedule across every social platform — fully hands-free.",
+    illustration: ContentEngineIllustration,
+  },
+  {
+    title: "Real-time Analytics",
+    subtitle: "Decisions at the speed of data",
+    description:
+      "Live dashboards that surface what matters — predictive insights, anomaly alerts, and revenue intelligence.",
+    illustration: AnalyticsIllustration,
   },
 ];
 
@@ -582,35 +936,52 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section id="services" className="py-24 border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="services" className="relative py-24 border-t border-white/5 overflow-hidden">
+        {/* Top emerald glow accent */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-emerald/10 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="relative max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-[11px] font-bold text-emerald uppercase tracking-[4px]">
               What We Build
             </span>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mt-4 mb-4">
-              AI that works as hard as you do
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mt-4 mb-5">
+              Systems that <span className="italic text-emerald">do the work</span>
             </h2>
-            <p className="text-text-secondary max-w-xl mx-auto">
+            <p className="text-text-secondary max-w-xl mx-auto text-lg">
               Not flashy demos — real systems that plug into real workflows and
               deliver measurable results.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s) => (
-              <div
-                key={s.title}
-                className="bg-surface border border-zinc-800 rounded-xl p-8 hover:border-emerald/30 transition group"
-              >
-                <div className="w-12 h-12 bg-emerald/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-emerald/20 transition">
-                  <s.icon className="w-6 h-6 text-emerald" />
+              <div key={s.title} className="service-card group">
+                {/* Text content */}
+                <div className="relative p-7 pb-5 z-[1]">
+                  <h3 className="font-heading text-xl font-semibold text-white mb-1.5">
+                    {s.title}
+                  </h3>
+                  <p className="text-[11px] uppercase tracking-[2px] font-semibold text-emerald/80 mb-4">
+                    {s.subtitle}
+                  </p>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    {s.description}
+                  </p>
                 </div>
-                <h3 className="font-heading text-lg font-semibold text-white mb-3">
-                  {s.title}
-                </h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
-                  {s.description}
-                </p>
+
+                {/* Illustration with bottom fade */}
+                <div
+                  className="relative px-7 pb-7 z-[1]"
+                  style={{
+                    maskImage:
+                      "linear-gradient(180deg, #000 0%, #000 65%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(180deg, #000 0%, #000 65%, transparent 100%)",
+                  }}
+                >
+                  <s.illustration />
+                </div>
               </div>
             ))}
           </div>
