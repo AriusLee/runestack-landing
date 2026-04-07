@@ -366,7 +366,7 @@ export default function Home() {
             </a>
             <a
               href="#contact"
-              className="bg-emerald hover:bg-emerald-dark text-white text-sm font-semibold px-5 py-2 rounded-lg transition cursor-pointer"
+              className="bg-emerald hover:bg-emerald-dark text-white text-sm font-semibold px-5 py-2 rounded-[2px] transition cursor-pointer"
             >
               Get in Touch
             </a>
@@ -485,14 +485,17 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4">
               <a
                 href="#contact"
-                className="bg-emerald hover:bg-emerald-dark text-white font-semibold px-8 py-3.5 rounded-lg transition flex items-center justify-center gap-2 cursor-pointer"
+                className="btn-primary group relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-white font-semibold tracking-wide cursor-pointer"
               >
-                Start a Project
-                <ArrowRightIcon className="w-4 h-4" />
+                <span className="btn-spark" />
+                <span className="relative z-10 flex items-center gap-2.5">
+                  Start a Project
+                  <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </span>
               </a>
               <a
                 href="#services"
-                className="bg-surface/60 backdrop-blur hover:bg-surface-light text-zinc-200 border border-zinc-700 font-semibold px-8 py-3.5 rounded-lg transition text-center cursor-pointer"
+                className="bg-surface/60 backdrop-blur hover:bg-surface-light text-zinc-200 border border-zinc-700 font-semibold px-8 py-3.5 rounded-[2px] transition text-center cursor-pointer"
               >
                 What We Do
               </a>
@@ -737,7 +740,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="mailto:hello@runestack.tech"
-              className="bg-emerald hover:bg-emerald-dark text-white font-semibold px-8 py-3.5 rounded-lg transition flex items-center gap-2 cursor-pointer"
+              className="bg-emerald hover:bg-emerald-dark text-white font-semibold px-8 py-3.5 rounded-[2px] transition flex items-center gap-2 cursor-pointer"
             >
               <MailIcon className="w-5 h-5" />
               hello@runestack.tech

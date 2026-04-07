@@ -358,7 +358,7 @@ export default function IndustriesSection() {
               <button
                 key={item.id}
                 onClick={() => setActive(i)}
-                className={`px-4 py-2.5 rounded-lg text-sm font-medium transition cursor-pointer text-left whitespace-nowrap lg:whitespace-normal ${
+                className={`px-4 py-2.5 rounded-[2px] text-sm font-medium transition cursor-pointer text-left whitespace-nowrap lg:whitespace-normal ${
                   active === i
                     ? "bg-emerald text-white shadow-lg shadow-emerald/20"
                     : "bg-surface border border-zinc-800 text-text-secondary hover:text-white hover:border-zinc-600"
@@ -408,7 +408,7 @@ export default function IndustriesSection() {
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-surface hover:bg-surface-light text-zinc-200 border border-zinc-700 font-semibold px-6 py-3 rounded-lg transition cursor-pointer"
+            className="inline-flex items-center gap-2 bg-surface hover:bg-surface-light text-zinc-200 border border-zinc-700 font-semibold px-6 py-3 rounded-[2px] transition cursor-pointer"
           >
             Tell us about your business
           </a>
