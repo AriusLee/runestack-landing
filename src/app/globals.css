@@ -93,6 +93,15 @@ html {
   will-change: color, filter;
 }
 
+/* Hide scrollbar for horizontal carousels */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── Service Card — atmospheric glow card ── */
 .service-card {
   position: relative;

@@ -954,9 +954,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Mobile: horizontal swipe carousel · Desktop: grid */}
+          <div className="-mx-6 md:mx-0">
+            <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none px-6 md:px-0 pb-4 md:pb-0 scrollbar-hide">
             {services.map((s) => (
-              <div key={s.title} className="service-card group">
+              <div key={s.title} className="service-card group shrink-0 md:shrink w-[85%] sm:w-[70%] md:w-auto snap-center">
                 {/* Text content */}
                 <div className="relative p-7 pb-5 z-[1]">
                   <h3 className="font-heading text-xl font-semibold text-white mb-1.5">
@@ -984,6 +986,7 @@ export default function Home() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </section>
