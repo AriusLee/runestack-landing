@@ -997,7 +997,7 @@ function IndustryPanel({ ind }: { ind: Industry }) {
       {/* Mobile-only comparison */}
       <div className="md:hidden">
         <div className="bg-surface border border-zinc-800 rounded-[2px] p-5 space-y-3">
-          <p className="text-[10px] text-zinc-500 leading-snug mb-1">{ind.comparison.task}</p>
+          <p className="text-xs text-white font-semibold leading-snug mb-1">{ind.comparison.task}</p>
           <div className="flex items-center justify-between">
             <span className="text-[10px] text-zinc-500 uppercase tracking-wider">Before</span>
             <span className="font-heading text-xl font-bold text-zinc-400">{ind.comparison.manual.time}</span>
