@@ -30,19 +30,66 @@ function Icon({ children, className = "" }: { children: React.ReactNode; classNa
   );
 }
 
-function CheckIcon({ className = "" }: { className?: string }) {
-  return (
-    <Icon className={className}>
-      <polyline points="20 6 9 17 4 12" />
-    </Icon>
-  );
-}
-
 function ArrowRightIcon({ className = "" }: { className?: string }) {
   return (
     <Icon className={className}>
       <line x1="5" y1="12" x2="19" y2="12" />
       <polyline points="12 5 19 12 12 19" />
+    </Icon>
+  );
+}
+
+function CodeIcon({ className = "" }: { className?: string }) {
+  return (
+    <Icon className={className}>
+      <polyline points="16 18 22 12 16 6" />
+      <polyline points="8 6 2 12 8 18" />
+    </Icon>
+  );
+}
+
+function TargetIcon({ className = "" }: { className?: string }) {
+  return (
+    <Icon className={className}>
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </Icon>
+  );
+}
+
+function UsersIcon({ className = "" }: { className?: string }) {
+  return (
+    <Icon className={className}>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </Icon>
+  );
+}
+
+function ZapIcon({ className = "" }: { className?: string }) {
+  return (
+    <Icon className={className}>
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </Icon>
+  );
+}
+
+function ShieldIcon({ className = "" }: { className?: string }) {
+  return (
+    <Icon className={className}>
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 .67-.94l7-2.86a1 1 0 0 1 .66 0l7 2.86A1 1 0 0 1 20 6z" />
+    </Icon>
+  );
+}
+
+function TrendingUpIcon({ className = "" }: { className?: string }) {
+  return (
+    <Icon className={className}>
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+      <polyline points="16 7 22 7 22 13" />
     </Icon>
   );
 }
@@ -441,12 +488,36 @@ const services = [
 
 
 const reasons = [
-  "We build real systems, not demos",
-  "Industry-specific AI — not one-size-fits-all",
-  "Full-stack team: AI + engineering + design",
-  "We ship fast and iterate faster",
-  "Your operations are sacred — we don't cut corners",
-  "AI that pays for itself in weeks, not months",
+  {
+    icon: CodeIcon,
+    title: "Real systems, not demos",
+    desc: "Production-grade software that runs your business — not flashy prototypes that fall apart at scale.",
+  },
+  {
+    icon: TargetIcon,
+    title: "Industry-specific AI",
+    desc: "Custom-built for your vertical. We learn your domain before writing a single line of code.",
+  },
+  {
+    icon: UsersIcon,
+    title: "Full-stack team",
+    desc: "AI, engineering, and design under one roof. No hand-offs, no miscommunication, no delays.",
+  },
+  {
+    icon: ZapIcon,
+    title: "Ship fast, iterate faster",
+    desc: "First working version in weeks. Then we refine based on real usage — not guesswork.",
+  },
+  {
+    icon: ShieldIcon,
+    title: "Your ops are sacred",
+    desc: "We treat your existing workflows with respect. Zero disruption during rollout, always.",
+  },
+  {
+    icon: TrendingUpIcon,
+    title: "ROI in weeks",
+    desc: "Our systems pay for themselves fast. If we can't show clear value, we'll tell you upfront.",
+  },
 ];
 
 /* ── Page ── */
@@ -775,7 +846,7 @@ export default function Home() {
 
       {/* ── WHY US ── */}
       <section className="py-24 border-t border-white/5">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
             <span className="text-[11px] font-bold text-emerald uppercase tracking-[4px]">
               Why Runestack
@@ -783,19 +854,26 @@ export default function Home() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-white mt-4 mb-4">
               Built different
             </h2>
+            <p className="text-text-secondary max-w-xl mx-auto">
+              We don&apos;t just bolt AI onto your stack. We engineer systems
+              that become the backbone of your operations.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {reasons.map((reason) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {reasons.map((r) => (
               <div
-                key={reason}
-                className="flex items-start gap-4 bg-surface border border-zinc-800 rounded-xl p-5"
+                key={r.title}
+                className="group relative bg-surface border border-zinc-800 rounded-[2px] p-6 hover:border-emerald/30 transition-colors"
               >
-                <div className="w-8 h-8 bg-emerald/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <CheckIcon className="w-4 h-4 text-emerald" />
+                <div className="w-10 h-10 bg-emerald/10 rounded-[2px] flex items-center justify-center mb-4 group-hover:bg-emerald/20 transition-colors">
+                  <r.icon className="w-5 h-5 text-emerald" />
                 </div>
-                <span className="text-sm text-zinc-200 leading-relaxed">
-                  {reason}
-                </span>
+                <h3 className="font-heading text-white font-semibold mb-2">
+                  {r.title}
+                </h3>
+                <p className="text-sm text-zinc-400 leading-relaxed">
+                  {r.desc}
+                </p>
               </div>
             ))}
           </div>
