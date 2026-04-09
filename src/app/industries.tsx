@@ -1,6 +1,107 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+type Industry = (typeof industryData)[number];
+
+/* ── Industry Icons (Lucide-style) ── */
+function IconBase({ children }: { children: React.ReactNode }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {children}
+    </svg>
+  );
+}
+
+function MegaphoneIcon() {
+  return (
+    <IconBase>
+      <path d="m3 11 18-5v12L3 14v-3z" />
+      <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6" />
+    </IconBase>
+  );
+}
+function BuildingIcon() {
+  return (
+    <IconBase>
+      <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
+      <path d="M9 22v-4h6v4" />
+      <path d="M8 6h.01" />
+      <path d="M16 6h.01" />
+      <path d="M12 6h.01" />
+      <path d="M12 10h.01" />
+      <path d="M12 14h.01" />
+      <path d="M16 10h.01" />
+      <path d="M16 14h.01" />
+      <path d="M8 10h.01" />
+      <path d="M8 14h.01" />
+    </IconBase>
+  );
+}
+function ChefHatIcon() {
+  return (
+    <IconBase>
+      <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z" />
+      <line x1="6" y1="17" x2="18" y2="17" />
+    </IconBase>
+  );
+}
+function FactoryIcon() {
+  return (
+    <IconBase>
+      <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+      <path d="M17 18h1" />
+      <path d="M12 18h1" />
+      <path d="M7 18h1" />
+    </IconBase>
+  );
+}
+function TrendingUpIcon() {
+  return (
+    <IconBase>
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+      <polyline points="16 7 22 7 22 13" />
+    </IconBase>
+  );
+}
+function TruckIcon() {
+  return (
+    <IconBase>
+      <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+      <path d="M15 18H9" />
+      <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
+      <circle cx="17" cy="18" r="2" />
+      <circle cx="7" cy="18" r="2" />
+    </IconBase>
+  );
+}
+function ShoppingBagIcon() {
+  return (
+    <IconBase>
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <path d="M16 10a4 4 0 0 1-8 0" />
+    </IconBase>
+  );
+}
+function GraduationCapIcon() {
+  return (
+    <IconBase>
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+      <path d="M6 12v5c3 3 9 3 12 0v-5" />
+    </IconBase>
+  );
+}
 
 /* ── Industry Mockup Teasers ── */
 /* Each industry gets a mini dashboard/UI preview rendered in CSS */
@@ -275,6 +376,7 @@ export const industryData = [
     title: "Marketing & Social",
     tagline: "Always-on content engine.",
     description: "AI auto-aggregates trending topics, generates on-brand content, visuals, and short-form video, then schedules everything across all your social platforms — hands-free.",
+    icon: MegaphoneIcon,
     mockup: MarketingMockup,
     comparison: {
       task: "Weekly content: research, design, video, copy & schedule",
@@ -289,6 +391,7 @@ export const industryData = [
     title: "Property Management",
     tagline: "Stop juggling spreadsheets.",
     description: "AI-managed listings, dynamic pricing, and booking sync across Airbnb, Booking.com, Agoda — all from one dashboard.",
+    icon: BuildingIcon,
     mockup: PropertyMockup,
     comparison: {
       task: "Daily sync: prices & availability for 20 units across 4 portals",
@@ -303,6 +406,7 @@ export const industryData = [
     title: "Food & Beverage",
     tagline: "From inventory to insights.",
     description: "Demand forecasting, automated stock reordering, and waste reduction. Your kitchen runs itself.",
+    icon: ChefHatIcon,
     mockup: FnBMockup,
     comparison: {
       task: "Daily inventory check & supplier ordering",
@@ -317,6 +421,7 @@ export const industryData = [
     title: "Manufacturing",
     tagline: "Predict before it breaks.",
     description: "Real-time OEE tracking, predictive maintenance alerts, and production line optimization.",
+    icon: FactoryIcon,
     mockup: ManufacturingMockup,
     comparison: {
       task: "Detect a machine failure before downtime",
@@ -331,6 +436,7 @@ export const industryData = [
     title: "Investment & Finance",
     tagline: "Your analyst that never sleeps.",
     description: "Automated deal flow analysis, portfolio monitoring, valuation models, and investor-ready report generation.",
+    icon: TrendingUpIcon,
     mockup: FinanceMockup,
     comparison: {
       task: "Generate an investor-ready quarterly report",
@@ -345,6 +451,7 @@ export const industryData = [
     title: "Logistics & Supply Chain",
     tagline: "Every route, optimized.",
     description: "Fleet tracking, route optimization, delivery ETAs, and fuel cost reduction — powered by real-time AI.",
+    icon: TruckIcon,
     mockup: LogisticsMockup,
     comparison: {
       task: "Plan optimal routes for 30 daily deliveries",
@@ -359,6 +466,7 @@ export const industryData = [
     title: "Retail & E-commerce",
     tagline: "Sell smarter, stock better.",
     description: "Sales forecasting, inventory intelligence, dynamic promotions, and zero-stockout operations.",
+    icon: ShoppingBagIcon,
     mockup: RetailMockup,
     comparison: {
       task: "Weekly stock reorder & sales analysis",
@@ -373,6 +481,7 @@ export const industryData = [
     title: "Education & Training",
     tagline: "Scale learning, not admin.",
     description: "Student progress tracking, at-risk detection, automated communications, and course performance analytics.",
+    icon: GraduationCapIcon,
     mockup: EducationMockup,
     comparison: {
       task: "Generate student progress reports",
@@ -384,10 +493,166 @@ export const industryData = [
   },
 ];
 
-/* ── Industries Section Component — Tabs Layout ── */
+/* ── Industry Detail Panel (shared by mobile + desktop) ── */
+function IndustryPanel({ ind }: { ind: Industry }) {
+  return (
+    <div className="space-y-10">
+      <div className="grid md:grid-cols-2 gap-8 items-center">
+        {/* Text */}
+        <div>
+          <span className="text-xs text-emerald font-semibold uppercase tracking-[3px]">
+            {ind.tagline}
+          </span>
+          <h3 className="font-heading text-2xl md:text-3xl font-bold text-white mt-2 mb-4">
+            {ind.title}
+          </h3>
+          <div className="w-10 h-0.5 bg-gradient-to-r from-emerald to-emerald-light rounded mb-4" />
+          <p className="text-text-secondary leading-relaxed text-base">
+            {ind.description}
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 mt-6 text-sm text-emerald font-semibold hover:underline cursor-pointer"
+          >
+            Learn more &rarr;
+          </a>
+        </div>
+
+        {/* Mockup */}
+        <div className="relative">
+          <div className="absolute inset-0 bg-emerald/5 rounded-2xl blur-2xl -m-4" />
+          <div className="relative">
+            <ind.mockup />
+          </div>
+        </div>
+      </div>
+
+      {/* Comparison block */}
+      <div className="bg-surface border border-zinc-800 rounded-[2px] p-6 md:p-8">
+        <div className="flex items-center gap-3 mb-5">
+          <span className="text-[10px] font-bold text-emerald uppercase tracking-[3px]">
+            Real-World Comparison
+          </span>
+          <div className="flex-1 h-px bg-gradient-to-r from-emerald/30 to-transparent" />
+        </div>
+
+        <p className="text-sm text-text-secondary mb-5">
+          <span className="text-white font-medium">Task:</span> {ind.comparison.task}
+        </p>
+
+        <div className="grid sm:grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-4 sm:gap-3">
+          {/* Manual */}
+          <div className="bg-[#0F0F11] border border-zinc-800 rounded-[2px] p-4 text-center">
+            <div className="text-[9px] font-bold text-zinc-500 uppercase tracking-[2px] mb-2">
+              Manual Process
+            </div>
+            <div className="font-heading text-3xl font-bold text-zinc-300 mb-1">
+              {ind.comparison.manual.time}
+            </div>
+            <div className="text-[11px] text-text-muted">
+              {ind.comparison.manual.label}
+            </div>
+          </div>
+
+          {/* Arrow */}
+          <div className="hidden sm:flex items-center justify-center text-emerald/50">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </div>
+
+          {/* AI */}
+          <div className="bg-emerald/5 border border-emerald/40 rounded-[2px] p-4 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald/10 to-transparent pointer-events-none" />
+            <div className="relative">
+              <div className="text-[9px] font-bold text-emerald uppercase tracking-[2px] mb-2">
+                With Runestack
+              </div>
+              <div className="font-heading text-3xl font-bold text-emerald mb-1">
+                {ind.comparison.ai.time}
+              </div>
+              <div className="text-[11px] text-text-secondary">
+                {ind.comparison.ai.label}
+              </div>
+            </div>
+          </div>
+
+          {/* Arrow */}
+          <div className="hidden sm:flex items-center justify-center text-emerald/50">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </div>
+
+          {/* Saved */}
+          <div className="bg-gradient-to-br from-emerald/15 to-emerald/5 border border-emerald rounded-[2px] p-4 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-emerald/5 blur-xl pointer-events-none" />
+            <div className="relative">
+              <div className="text-[9px] font-bold text-emerald-light uppercase tracking-[2px] mb-2">
+                You Save
+              </div>
+              <div className="font-heading text-3xl font-bold text-white mb-1">
+                {ind.comparison.saved}
+              </div>
+              <div className="text-[11px] text-emerald-light">
+                {ind.comparison.savedLabel}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Industries Section Component ── */
 export default function IndustriesSection() {
   const [active, setActive] = useState(0);
-  const ind = industryData[active];
+  const mobileRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Mobile: scroll-driven active sync
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      // Only run on mobile (sticky nav layout)
+      if (window.matchMedia("(min-width: 1024px)").matches) return;
+      const targetY = window.innerHeight * 0.3;
+      let bestIdx = 0;
+      let bestDist = Infinity;
+      mobileRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const dist = Math.abs(rect.top - targetY);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIdx = i;
+        }
+      });
+      setActive(bestIdx);
+    };
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  const scrollToIndex = (i: number) => {
+    const el = mobileRefs.current[i];
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 88;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
 
   return (
     <section id="industries" className="py-28 border-t border-white/5">
@@ -406,133 +671,72 @@ export default function IndustriesSection() {
           </p>
         </div>
 
-        {/* Tabs left + content right */}
-        <div className="grid lg:grid-cols-[220px_1fr] gap-8">
+        {/* Desktop: tabs left + single panel right */}
+        <div className="hidden lg:grid lg:grid-cols-[220px_1fr] gap-8">
           {/* Left tab buttons */}
-          <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
-            {industryData.map((item, i) => (
-              <button
-                key={item.id}
-                onClick={() => setActive(i)}
-                className={`px-4 py-2.5 rounded-[2px] text-sm font-medium transition cursor-pointer text-left whitespace-nowrap lg:whitespace-normal ${
-                  active === i
-                    ? "bg-emerald text-white shadow-lg shadow-emerald/20"
-                    : "bg-surface border border-zinc-800 text-text-secondary hover:text-white hover:border-zinc-600"
-                }`}
-              >
-                {item.title}
-              </button>
-            ))}
+          <div className="flex flex-col gap-1">
+            {industryData.map((item, i) => {
+              const Icon = item.icon;
+              const isActive = active === i;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setActive(i)}
+                  className={`group relative flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer text-left ${
+                    isActive
+                      ? "text-emerald bg-gradient-to-r from-emerald/25 via-emerald/10 to-transparent"
+                      : "text-zinc-500 hover:text-white"
+                  }`}
+                >
+                  <span
+                    className={`absolute left-0 top-1.5 bottom-1.5 w-[2px] rounded-r-full bg-emerald transition-opacity duration-200 ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                  <Icon />
+                  <span className="flex-1">{item.title}</span>
+                </button>
+              );
+            })}
           </div>
 
-          {/* Right content */}
-          <div className="space-y-10">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              {/* Text */}
-              <div>
-                <span className="text-xs text-emerald font-semibold uppercase tracking-[3px]">
-                  {ind.tagline}
-                </span>
-                <h3 className="font-heading text-2xl md:text-3xl font-bold text-white mt-2 mb-4">
-                  {ind.title}
-                </h3>
-                <div className="w-10 h-0.5 bg-gradient-to-r from-emerald to-emerald-light rounded mb-4" />
-                <p className="text-text-secondary leading-relaxed text-base">
-                  {ind.description}
-                </p>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 mt-6 text-sm text-emerald font-semibold hover:underline cursor-pointer"
+          <IndustryPanel ind={industryData[active]} />
+        </div>
+
+        {/* Mobile: sticky icon nav + scrolling stacked panels */}
+        <div className="lg:hidden flex gap-4">
+          {/* Sticky icon-only nav */}
+          <nav className="sticky top-20 self-start flex flex-col gap-1.5 py-2 z-10">
+            {industryData.map((item, i) => {
+              const Icon = item.icon;
+              const isActive = active === i;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToIndex(i)}
+                  aria-label={item.title}
+                  className={`w-10 h-10 flex items-center justify-center transition-colors duration-200 cursor-pointer ${
+                    isActive ? "text-emerald" : "text-zinc-700 hover:text-zinc-400"
+                  }`}
                 >
-                  Learn more &rarr;
-                </a>
+                  <Icon />
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Scrolling stacked panels */}
+          <div className="flex-1 min-w-0 space-y-24">
+            {industryData.map((item, i) => (
+              <div
+                key={item.id}
+                ref={(el) => {
+                  mobileRefs.current[i] = el;
+                }}
+              >
+                <IndustryPanel ind={item} />
               </div>
-
-              {/* Mockup */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-emerald/5 rounded-2xl blur-2xl -m-4" />
-                <div className="relative">
-                  <ind.mockup />
-                </div>
-              </div>
-            </div>
-
-            {/* Comparison block */}
-            <div className="bg-surface border border-zinc-800 rounded-[2px] p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-[10px] font-bold text-emerald uppercase tracking-[3px]">
-                  Real-World Comparison
-                </span>
-                <div className="flex-1 h-px bg-gradient-to-r from-emerald/30 to-transparent" />
-              </div>
-
-              <p className="text-sm text-text-secondary mb-5">
-                <span className="text-white font-medium">Task:</span> {ind.comparison.task}
-              </p>
-
-              <div className="grid sm:grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-4 sm:gap-3">
-                {/* Manual */}
-                <div className="bg-[#0F0F11] border border-zinc-800 rounded-[2px] p-4 text-center">
-                  <div className="text-[9px] font-bold text-zinc-500 uppercase tracking-[2px] mb-2">
-                    Manual Process
-                  </div>
-                  <div className="font-heading text-3xl font-bold text-zinc-300 mb-1">
-                    {ind.comparison.manual.time}
-                  </div>
-                  <div className="text-[11px] text-text-muted">
-                    {ind.comparison.manual.label}
-                  </div>
-                </div>
-
-                {/* Arrow */}
-                <div className="hidden sm:flex items-center justify-center text-emerald/50">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </div>
-
-                {/* AI */}
-                <div className="bg-emerald/5 border border-emerald/40 rounded-[2px] p-4 text-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald/10 to-transparent pointer-events-none" />
-                  <div className="relative">
-                    <div className="text-[9px] font-bold text-emerald uppercase tracking-[2px] mb-2">
-                      With Runestack
-                    </div>
-                    <div className="font-heading text-3xl font-bold text-emerald mb-1">
-                      {ind.comparison.ai.time}
-                    </div>
-                    <div className="text-[11px] text-text-secondary">
-                      {ind.comparison.ai.label}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Arrow */}
-                <div className="hidden sm:flex items-center justify-center text-emerald/50">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </div>
-
-                {/* Saved */}
-                <div className="bg-gradient-to-br from-emerald/15 to-emerald/5 border border-emerald rounded-[2px] p-4 text-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-emerald/5 blur-xl pointer-events-none" />
-                  <div className="relative">
-                    <div className="text-[9px] font-bold text-emerald-light uppercase tracking-[2px] mb-2">
-                      You Save
-                    </div>
-                    <div className="font-heading text-3xl font-bold text-white mb-1">
-                      {ind.comparison.saved}
-                    </div>
-                    <div className="text-[11px] text-emerald-light">
-                      {ind.comparison.savedLabel}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
