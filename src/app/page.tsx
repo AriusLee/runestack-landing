@@ -30,26 +30,6 @@ function Icon({ children, className = "" }: { children: React.ReactNode; classNa
   );
 }
 
-function ZapIcon({ className = "" }: { className?: string }) {
-  return (
-    <Icon className={className}>
-      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-    </Icon>
-  );
-}
-
-function RocketIcon({ className = "" }: { className?: string }) {
-  return (
-    <Icon className={className}>
-      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-      <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-    </Icon>
-  );
-}
-
-
 function CheckIcon({ className = "" }: { className?: string }) {
   return (
     <Icon className={className}>
@@ -700,15 +680,28 @@ export default function Home() {
                 { label: "Solve the real problem", desc: "We don't sell AI for AI's sake" },
                 { label: "Earn the trust", desc: "Your operations are sacred" },
                 { label: "Stay curious", desc: "Every industry has patterns to decode" },
-              ].map((v) => (
+              ].map((v, i) => (
                 <div
                   key={v.label}
-                  className="bg-surface border border-zinc-800 rounded-xl p-5"
+                  className="group relative bg-gradient-to-br from-surface to-zinc-950 border border-zinc-800 rounded-xl p-6 overflow-hidden transition-all duration-300 hover:border-emerald/40 hover:-translate-y-0.5 cursor-default"
                 >
-                  <h4 className="font-heading text-sm font-semibold text-emerald mb-2">
+                  {/* Corner glow on hover */}
+                  <div className="absolute -top-16 -right-16 w-40 h-40 bg-emerald/15 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  {/* Top accent bar */}
+                  <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-emerald/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Numbered chip */}
+                  <div className="relative flex items-center gap-2 mb-4">
+                    <span className="font-mono text-[10px] font-bold text-emerald tracking-widest">
+                      0{i + 1}
+                    </span>
+                    <span className="h-px flex-1 max-w-[28px] bg-emerald/30 group-hover:bg-emerald/60 group-hover:max-w-[44px] transition-all duration-500" />
+                  </div>
+
+                  <h4 className="relative font-heading text-base font-bold text-white mb-2 leading-tight group-hover:text-emerald transition-colors duration-300">
                     {v.label}
                   </h4>
-                  <p className="text-xs text-text-muted leading-relaxed">
+                  <p className="relative text-xs text-text-muted leading-relaxed">
                     {v.desc}
                   </p>
                 </div>
@@ -809,39 +802,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── MISSION / VISION ── */}
-      <section className="py-24 border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-surface border border-zinc-800 rounded-xl p-10">
-              <div className="w-12 h-12 bg-emerald/10 rounded-lg flex items-center justify-center mb-6">
-                <RocketIcon className="w-6 h-6 text-emerald" />
-              </div>
-              <h3 className="font-heading text-sm font-bold text-emerald uppercase tracking-[3px] mb-3">
-                Mission
-              </h3>
-              <p className="text-lg text-zinc-200 leading-relaxed">
-                To eliminate operational friction in every industry by building
-                AI systems that work as hard as the people they serve.
-              </p>
-            </div>
-            <div className="bg-surface border border-zinc-800 rounded-xl p-10">
-              <div className="w-12 h-12 bg-emerald/10 rounded-lg flex items-center justify-center mb-6">
-                <ZapIcon className="w-6 h-6 text-emerald" />
-              </div>
-              <h3 className="font-heading text-sm font-bold text-emerald uppercase tracking-[3px] mb-3">
-                Vision
-              </h3>
-              <p className="text-lg text-zinc-200 leading-relaxed">
-                A world where business owners spend zero time on operations
-                that machines can handle better — and all their time on the
-                work that actually matters.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── CTA / CONTACT ── */}
       <section id="contact" className="py-24 border-t border-white/5">
         <div className="max-w-3xl mx-auto px-6 text-center">
@@ -867,12 +827,12 @@ export default function Home() {
           <p className="text-text-muted text-sm mt-6">
             Or reach out on{" "}
             <a
-              href="https://linkedin.com/company/runestack"
+              href="https://wa.me/60122825252"
               target="_blank"
               rel="noopener noreferrer"
               className="text-emerald hover:underline cursor-pointer"
             >
-              LinkedIn
+              WhatsApp
             </a>
           </p>
         </div>
