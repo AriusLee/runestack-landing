@@ -939,6 +939,15 @@ export default function Home() {
             runestack.tech
           </a>
         </div>
+        <div className="max-w-6xl mx-auto px-6 mt-6 pt-6 border-t border-white/5">
+          <p className="text-xs text-text-muted text-center">
+            Runestack Technologies operates under{" "}
+            <span className="text-text-secondary font-medium">
+              Boustead Global Limited
+            </span>
+            .
+          </p>
+        </div>
       </footer>
     </>
   );
