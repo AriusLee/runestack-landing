@@ -929,7 +929,7 @@ export default function Home() {
             />
             <span className="text-sm text-text-muted">
               <span className="text-emerald font-semibold">Runestack</span>{" "}
-              Technologies &copy; {new Date().getFullYear()}
+              &copy; {new Date().getFullYear()} Boustead Global Limited
             </span>
           </div>
           <a
